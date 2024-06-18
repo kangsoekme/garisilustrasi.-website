@@ -1,0 +1,375 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway';
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+
+}
+
+header.nav-container {
+    width: 100%;
+    padding: 0.2rem;
+    margin-inline: auto;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    box-shadow: 0px 3px 6px 2px rgba(0, 0, 0, 0.2);
+}
+
+header.nav-container .tulisan img {
+    width: 200px;
+    margin-top: 10px;
+}
+
+header.nav-container .nav-list ul {
+    padding-left: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem 2em;
+}
+
+header.nav-container .nav-list li {
+    list-style-type: none;
+}
+
+header.nav-container .nav-list li a {
+    padding: 0.5rem 1.5rem;
+    text-decoration: none ;
+    font-weight: 650;
+    font-size: 1.3rem;
+    color: black;
+
+    transition: all 0.1s ease-in-out;
+}
+
+header.nav-container .nav-list li a:hover {
+    font-weight: 850;
+    color: #ff6500;
+    letter-spacing: 1px;
+}
+
+.home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-image: url(../img/back-belakang.jpg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.home .content-home{
+    padding-left: 10%;
+    max-width: 40rem;
+
+}
+
+.home .content-home h1 {
+    color: white;
+    font-size: 4em;
+    font-weight: 1000;
+    margin-bottom: 0;
+    text-shadow: 0px 1px 7px rgba(0, 0, 0, 0.60);
+}
+
+.home .content-home p {
+    font-size: 1.2rem;
+    flex-wrap: wrap;
+    color: white;
+    text-shadow: 0px 2px 7px rgba(0, 0, 0, 1);
+    
+}
+
+.home .content-home button {
+    padding: 0.8rem 2.5rem;
+    border: 3px solid transparent;
+    border-radius: 9999px;
+    margin-block-start: 1rem;
+
+    background-color: white;
+    font-family: 'Raleway';
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ff6500;
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+}
+
+.home .content-home button:hover {
+    border: 3px solid white;
+    background-color: transparent;
+    color: white;
+    transition: all 0.15s ease-in;
+    
+}
+
+.about{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-inline: auto;
+    padding: 4.4% 8rem 2% 8rem;
+    box-shadow: 0px 0px 9px 7px rgba(0,0,0,0.27);
+}
+
+.about img {
+    width: 300px;
+}
+.about .tulisan {
+    max-width: 25rem;
+    flex-grow: 3;
+}
+
+.about .tulisan h1 {
+    text-align: right;
+    font-size: 45px;
+    font-weight: 900;
+    color: #ff6500;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-top: 10%;
+
+}
+
+.about .tulisan p {
+    text-align: right;
+    letter-spacing: 0.7px;
+}
+
+.services {
+    background-color: #ff6500;
+    padding: 3%;
+}
+.services h1 {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 2rem;
+    padding-top: 3rem;
+    margin-top: 0;
+}
+
+.services .produk {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 3%;
+    gap: 3rem;
+    flex-wrap: wrap;
+    
+}
+
+.services .produk .daftar {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    font-size: 12px;
+    box-shadow: 0px 0px 9px 7px rgba(0,0,0,0.27);
+}
+
+.services .produk img {
+    width: 150px;
+}
+
+aside {
+    position: fixed;
+    inset-block: 50%;
+    inset-inline-end: 30;
+}
+
+aside .social-media {
+    height: 100%;
+    display: flex;
+}
+
+
+
+aside .social-media ul {
+    padding: 1.5rem 1rem;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    margin: auto;
+    background-color: white;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    box-shadow: 0px 0px 9px 7px rgba(0,0,0,0.27);
+}
+
+aside .social-media li {
+    list-style-type: none;
+}
+
+aside .social-media li a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: #ff6500;
+
+    transition: all 0.1s ease-in-out;
+}
+
+aside .social-media li a:hover {
+    font-size: 2rem;
+}
+
+aside .social-media li img {
+    width: 30px;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 3rem;
+}
+
+footer .kontak {
+    padding-top: 1rem;
+}
+
+footer .kontak ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding-left: 0;
+}
+
+footer .kontak li {
+    list-style-type: none;
+}
+
+footer .kontak li a {
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: #ff6500;
+
+    transition: all 0.1s ease-in-out;
+}
+
+footer .kontak li a:hover {
+    font-size: 1.7rem;
+}
+
+footer .navigation ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding-left: 0;
+    margin: 0;
+}
+
+footer .navigation li {
+    list-style-type: none;
+}
+
+footer .navigation li a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #ff6500;
+
+    transition: all 0.1s ease-in-out;
+}
+
+footer .navigation li a:hover {
+    font-weight: 700;
+}
+
+footer p {
+    text-align: center;
+    color: #ff6500;
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+    header.nav-container {
+        flex-direction: column;
+    }
+    header.nav-container .nav-list ul{
+        flex-wrap: wrap;
+        column-gap: 2rem;
+    }
+
+    .home {
+        background-position: 30%;
+
+    }
+    .home .content-home {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .home .content-home h1 {
+        text-align: center;
+    }
+    .home .content-home p {
+        text-align: center;
+    }
+
+    .home .content-home button {
+        position: relative;
+        left: 14%;
+        margin-top: 3rem;
+        width: 300px;
+        height: 70px;
+        font-size: 25px;
+        font-weight: 700;
+    }
+
+    .about {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .about img {
+        flex: 0 0 auto;
+        margin: 10px;
+    }
+
+    .about .tulisan h1 {
+        text-align: center;
+        margin-top: 0;
+    }
+
+    .about .tulisan p {
+        text-align: center;
+    }
+    aside {
+        position: fixed;
+        inset-block: 50%;
+        inset-inline-end: 30;
+    }
+}
+
+
+
