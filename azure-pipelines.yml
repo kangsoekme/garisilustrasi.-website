@@ -7,13 +7,39 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: GitClone@2
+  displayName: 'Git Clone'
+  inputs:
+    repository: 'garisilustrasi.-website'
+    branch: 'main'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    command: 'install'
+
+- task: AzureResourceManagerTemplateDeployment@3
+  displayName: 'ARM Deployment'
+  inputs:
+    deploymentScope: 'ResourceGroup'
+    azureResourceManagerConnection: 'nama-koneksi-azure'
+    subscriptionName: 'nama-langganan'
+    resourceGroupName: 'nama-grup-sumber-daya'
+    location: 'Southeast Asia'
+    templateLocation: 'Linked artifact'
+    csmFile: 'azuredeploy.json'
+    csmParametersFile: '$(System.DefaultWorkingDirectory)/azuredeploy.parameters.json'
+
+- task: AzureRmWebAppDeployment@4
+  displayName: 'Deploy Azure App Service'
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureResourceManagerConnection: 'nama-koneksi-azure'
+    appType: 'webApp'
+    appName: 'nama-aplikasi'
+    deployToSlotOrASE: false
+    resourceGroupName: 'nama-grup-sumber-daya'
+    slotName: 'production'
