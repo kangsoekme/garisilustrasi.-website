@@ -1,20 +1,30 @@
 trigger:
-- main
+- main # Pipeline akan berjalan setiap kali branch main diperbarui
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'ubuntu-latest' # VM yang digunakan
 
 steps:
-- task: UseNode@1
-  inputs:
-    version: '16.x'
+# 1. Checkout kode dari Azure Repos
+- task: Checkout@1
+  displayName: 'Checkout Source Code'
 
+# 2. Copy file website ke folder output
 - script: |
-    echo "Deploying to GitHub Pages..."
-    # Push HTML/CSS files to gh-pages branch
-    git config user.name "GitHub Actions"
-    git config user.email "<email>"
-    git add .
-    git commit -m "Deploy to GitHub Pages"
-    git push origin gh-pages
-  displayName: 'Deploy to GitHub Pages'
+    echo "Preparing website files for deployment..."
+    mkdir output
+    cp -r * output
+  displayName: 'Prepare Files'
+
+# 3. Deploy ke Azure Storage
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: '<Azure Subscription Name>' # Ganti dengan nama subscription Anda
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      az storage blob upload-batch \
+        --destination \$web \
+        --account-name <your-storage-account-name> \
+        --source ./output
+  displayName: 'Deploy to Azure Storage'
