@@ -1,8 +1,3 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - main
 
@@ -10,36 +5,16 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: GitClone@2
-  displayName: 'Git Clone'
+- task: UseNode@1
   inputs:
-    repository: 'garisilustrasi.-website'
-    branch: 'main'
+    version: '16.x'
 
-- task: Npm@1
-  displayName: 'npm install'
-  inputs:
-    command: 'install'
-
-- task: AzureResourceManagerTemplateDeployment@3
-  displayName: 'ARM Deployment'
-  inputs:
-    deploymentScope: 'ResourceGroup'
-    azureResourceManagerConnection: 'nama-koneksi-azure'
-    subscriptionName: 'nama-langganan'
-    resourceGroupName: 'nama-grup-sumber-daya'
-    location: 'Southeast Asia'
-    templateLocation: 'Linked artifact'
-    csmFile: 'azuredeploy.json'
-    csmParametersFile: '$(System.DefaultWorkingDirectory)/azuredeploy.parameters.json'
-
-- task: AzureRmWebAppDeployment@4
-  displayName: 'Deploy Azure App Service'
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureResourceManagerConnection: 'nama-koneksi-azure'
-    appType: 'webApp'
-    appName: 'nama-aplikasi'
-    deployToSlotOrASE: false
-    resourceGroupName: 'nama-grup-sumber-daya'
-    slotName: 'production'
+- script: |
+    echo "Deploying to GitHub Pages..."
+    # Push HTML/CSS files to gh-pages branch
+    git config user.name "GitHub Actions"
+    git config user.email "<email>"
+    git add .
+    git commit -m "Deploy to GitHub Pages"
+    git push origin gh-pages
+  displayName: 'Deploy to GitHub Pages'
